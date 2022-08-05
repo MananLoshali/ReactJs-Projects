@@ -28,7 +28,10 @@ import React from 'react'
 import Announcement from '../Components/Announcement'
 import Category from '../Components/Category'
 import Navbar from '../Components/Navbar'
+import Newsletter from '../Components/Newsletter'
+import Product from '../Components/Product'
 import Slider from '../Components/Slider'
+import Footer from '../Components/Footer'
 
 function Home() {
   return (
@@ -37,6 +40,9 @@ function Home() {
     <Navbar/> 
      <Slider/>
      <Category/>
+     <Product/>
+     <Newsletter/>
+     <Footer/>
     </>
   )
 }

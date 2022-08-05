@@ -119,6 +119,7 @@ import { ArrowLeft ,ArrowRight} from '@mui/icons-material'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {sliderImages} from '../data'
+import { mobile } from '../responsive'
 
 
 const OuterContainer = styled.div`
@@ -127,6 +128,8 @@ const OuterContainer = styled.div`
     display: flex;
     position: relative;
     /* overflow: hidden; */
+
+    ${mobile({})}
 `
 
 const Arrow = styled.div`
@@ -160,7 +163,9 @@ const Wrapper = styled.div`
     height: 100%;
     display: flex;
     justify-content: space-around;
-    background-color: #${(props)=>props.bg};
+    background-color: #${(props) => props.bg};
+
+    ${mobile({})}
 `
 
 const ImageContainer = styled.div`
@@ -168,6 +173,9 @@ const ImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${mobile({flex: 2})}
+    
 `
 
 const InfoContainer = styled.div`
@@ -180,20 +188,26 @@ const InfoContainer = styled.div`
 `
 
 const Image = styled.img`
-   width: 80%;
+   width: 70%;
    height: 80%;
    /* background-image: url(${(props) => props.src}); */
+
+   ${mobile({height: "250px" , width: "180px"})}
 `
 
 const Title = styled.h1`
     color: brown;
     font-size: 4rem;
+
+    ${mobile({fontSize: "2rem"})}
 `
 
 const Description = styled.p`
     color: green;
     letter-spacing: .2rem;
     line-height: 1.5rem;
+
+    ${mobile({letterSpacing:0, lineHeight:"1rem"})}
 `
 
 const Button = styled.button`
@@ -205,6 +219,8 @@ const Button = styled.button`
     margin-top: 20px;
     font-weight: bold;
     cursor: pointer;
+
+    ${mobile({width: "100px"})}
 `
 
 

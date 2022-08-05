@@ -1,5 +1,6 @@
 // import Home from "./Pages/Home";
 
+
 // function App() {
 //   return (
 //     <Home/>
@@ -11,13 +12,14 @@
 
 
 
-import React from 'react'
-import Home from './Pages/Home'
+
+import SingleProduct from "./Pages/SingleProduct"
+
 
 function App() {
   return (
     <>
-    <Home/>
+    <SingleProduct/>
     </>
   )
 }

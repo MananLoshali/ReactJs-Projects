@@ -86,6 +86,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ShoppingCart } from '@mui/icons-material';
+import {mobile} from '../responsive'
 
 
 const Container = styled.div`
@@ -95,6 +96,8 @@ const Container = styled.div`
     justify-content: space-evenly;
     align-items: center;
     background-color: blanchedalmond;
+
+    ${mobile({height: "50px"})}
 `
 
 const ContainerLeft = styled.div`
@@ -119,14 +122,19 @@ const ContainerRight = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
 `
 
 const Heading = styled.h5`
     cursor: pointer;
+
+    ${mobile({fontSize:"12px"})}
 `
 
 const Name = styled.h1`
     color: #ff4800;
+
+    ${mobile({fontSize:"25px"})}
 `
 
 
