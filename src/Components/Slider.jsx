@@ -111,160 +111,150 @@
 
 // export default Slider;
 
-
-
-
-
-import { ArrowLeft ,ArrowRight} from '@mui/icons-material'
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import {sliderImages} from '../data'
-import { mobile } from '../responsive'
-
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { sliderImages } from "../data";
+import { mobile } from "../responsive";
 
 const OuterContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-    /* overflow: hidden; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 
-    ${mobile({})}
-`
+  ${mobile({})}
+`;
 
 const Arrow = styled.div`
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: ${(props) => props.direction === "left" && "10px"};
-    right: ${(props) =>props.direction === "right" && "10px"};
-    cursor: pointer;
-    z-index: 1;
-`
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: ${(props) => props.direction === "left" && "10px"};
+  right: ${(props) => props.direction === "right" && "10px"};
+  cursor: pointer;
+  z-index: 1;
+`;
 
 const Container = styled.div`
-    width: 100%;
-    height: 87vh;
-    display: flex;
-`
+  width: 100%;
+  height: 87vh;
+  display: flex;
+`;
 
 const Slides = styled.div`
-    height: 100%;
-    width: 100vw;
-    display: flex;
-    transform: translateX(${props => props.slides * -100} vw);
-`
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  transform: translateX(${(props) => props.slides * -100} vw);
+`;
 
 const Wrapper = styled.div`
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    background-color: #${(props) => props.bg};
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #${(props) => props.bg};
 
-    ${mobile({})}
-`
+  ${mobile({})}
+`;
 
 const ImageContainer = styled.div`
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    ${mobile({flex: 2})}
-    
-`
+  ${mobile({ flex: 2 })}
+`;
 
 const InfoContainer = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-right: 20px;
-`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+`;
 
 const Image = styled.img`
-   width: 70%;
-   height: 80%;
-   /* background-image: url(${(props) => props.src}); */
+  width: 70%;
+  height: 80%;
+  /* background-image: url(${(props) => props.src}); */
 
-   ${mobile({height: "250px" , width: "180px"})}
-`
+  ${mobile({ height: "250px", width: "180px" })}
+`;
 
 const Title = styled.h1`
-    color: brown;
-    font-size: 4rem;
+  color: brown;
+  font-size: 4rem;
 
-    ${mobile({fontSize: "2rem"})}
-`
+  ${mobile({ fontSize: "2rem" })}
+`;
 
 const Description = styled.p`
-    color: green;
-    letter-spacing: .2rem;
-    line-height: 1.5rem;
+  color: green;
+  letter-spacing: 0.2rem;
+  line-height: 1.5rem;
 
-    ${mobile({letterSpacing:0, lineHeight:"1rem"})}
-`
+  ${mobile({ letterSpacing: 0, lineHeight: "1rem" })}
+`;
 
 const Button = styled.button`
-    color: red;
-    width: 20%;
-    height: 10%;
-    border-radius: 20px;
-    font-size: 1rem;
-    margin-top: 20px;
-    font-weight: bold;
-    cursor: pointer;
+  color: red;
+  width: 20%;
+  height: 10%;
+  border-radius: 20px;
+  font-size: 1rem;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
 
-    ${mobile({width: "100px"})}
-`
-
-
+  ${mobile({ width: "100px" })}
+`;
 
 function Slider() {
+  const [slide, setSlide] = useState(0);
 
-   const[slide,setSlide] = useState(0)
+  const handleClick = (direction) => {
+    if (direction === "left") {
+      setSlide(slide > 0 ? slide - 1 : 2);
+      //slide > 0 ? slide - 1 : 2
+    } else {
+      setSlide(slide < 2 ? slide + 1 : 0);
+    }
+  };
 
-    const handleClick = (direction) =>{
-        if (direction === "left") {
-            setSlide( slide > 0 ? slide - 1 : 2 ) 
-            //slide > 0 ? slide - 1 : 2
-        }
-        else {
-            setSlide( slide < 2 ? slide + 1 : 0 )
-        }
-    };
-    
   return (
     <OuterContainer>
-        <Arrow direction="left" onClick={() => handleClick("left")}>
-            <ArrowLeft/>
-        </Arrow>
-        <Slides slides={slide}>
-        {sliderImages.map((items)=>(
-            <Container key={items.id}>
-            <Wrapper bg = {items.bg} >
-                <ImageContainer>
-                    <Image src = {items.img} />
-                </ImageContainer>
-                <InfoContainer>
-                    <Title>{items.title}</Title>
-                    <Description>{items.desc}</Description>
-                    <Button>SHOP NOW</Button>
-                </InfoContainer>
+      <Arrow direction="left" onClick={() => handleClick("left")}>
+        <ArrowLeft />
+      </Arrow>
+      <Slides slides={slide}>
+        {sliderImages.map((items) => (
+          <Container key={items.id}>
+            <Wrapper bg={items.bg}>
+              <ImageContainer>
+                <Image src={items.img} />
+              </ImageContainer>
+              <InfoContainer>
+                <Title>{items.title}</Title>
+                <Description>{items.desc}</Description>
+                <Button>SHOP NOW</Button>
+              </InfoContainer>
             </Wrapper>
-            </Container>
+          </Container>
         ))}
-        </Slides>
-        <Arrow direction="right" onClick={() => handleClick("right")}>
-            <ArrowRight/>
-        </Arrow>
+      </Slides>
+      <Arrow direction="right" onClick={() => handleClick("right")}>
+        <ArrowRight />
+      </Arrow>
     </OuterContainer>
-  )
+  );
 }
 
-export default Slider
+export default Slider;

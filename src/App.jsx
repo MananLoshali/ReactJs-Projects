@@ -1,27 +1,11 @@
-// import Home from "./Pages/Home";
-
-
-// function App() {
-//   return (
-//     <Home/>
-//   );
-// }
-
-// export default App;
-
-
-
-
-
-import SingleProduct from "./Pages/SingleProduct"
-
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <>
-    <SingleProduct/>
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
