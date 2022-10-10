@@ -79,86 +79,89 @@
 
 // export default Navbar;
 
-
-
-
-
-import React from 'react'
-import styled from 'styled-components'
-import { ShoppingCart } from '@mui/icons-material';
-import {mobile} from '../responsive'
-
+import React from "react";
+import styled from "styled-components";
+import { ShoppingCart } from "@mui/icons-material";
+import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
-    width:100vw;
-    height: 8vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: blanchedalmond;
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: blanchedalmond;
 
-    ${mobile({height: "50px"})}
-`
+  ${mobile({ height: "50px" })}
+`;
 
 const ContainerLeft = styled.div`
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    
-`
-
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+`;
 
 const ContainerCenter = styled.div`
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-
-`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const ContainerRight = styled.div`
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Heading = styled.h5`
-    cursor: pointer;
+  cursor: pointer;
 
-    ${mobile({fontSize:"12px"})}
-`
+  :hover {
+    color: orangered;
+  }
+
+  ${mobile({ fontSize: "12px" })}
+`;
 
 const Name = styled.h1`
-    color: #ff4800;
+  color: #ff4800;
 
-    ${mobile({fontSize:"25px"})}
-`
-
-
+  ${mobile({ fontSize: "25px" })}
+`;
 
 function Navbar() {
   return (
     <Container>
-        <ContainerLeft>
-            <Heading>Register</Heading>
-            <Heading> Login</Heading>
-        </ContainerLeft>
+      <ContainerLeft>
+        <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+          <Heading>Register</Heading>
+        </Link>
 
-        <ContainerCenter>
-            <Name>BAZZAR</Name>
-        </ContainerCenter>
+        <Link
+          to="/login"
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
+          <Heading>Login</Heading>
+        </Link>
+      </ContainerLeft>
 
-        <ContainerRight>
-            <Heading>
-                <ShoppingCart/>
-            </Heading>
-        </ContainerRight>
+      <ContainerCenter>
+        <Name>BAZZAR</Name>
+      </ContainerCenter>
 
+      <ContainerRight>
+        <Heading>
+          <ShoppingCart />
+        </Heading>
+      </ContainerRight>
     </Container>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
